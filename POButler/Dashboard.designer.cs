@@ -54,13 +54,13 @@ namespace POButler
             this.ordValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.docHeaderTempBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.manifolddbDataSet = new POButler.ManifolddbDataSet();
-            this._DocHeaderTempBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this._lblReccount = new System.Windows.Forms.Label();
             this._Label1 = new System.Windows.Forms.Label();
             this._lblPasteldb = new System.Windows.Forms.Label();
             this._BtnConString = new System.Windows.Forms.Button();
             this._Label9 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnScanner = new System.Windows.Forms.Button();
+            this.docHeaderTempTableAdapter = new POButler.ManifolddbDataSetTableAdapters.DocHeaderTempTableAdapter();
             this._Button3 = new System.Windows.Forms.Button();
             this._btnCheckCodes = new System.Windows.Forms.Button();
             this._BtnPostToPastel = new System.Windows.Forms.Button();
@@ -69,13 +69,10 @@ namespace POButler
             this._BtnCurrPOs = new System.Windows.Forms.Button();
             this._BtnDownloadPOs = new System.Windows.Forms.Button();
             this._PictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.btnScanner = new System.Windows.Forms.Button();
-            this.docHeaderTempTableAdapter = new POButler.ManifolddbDataSetTableAdapters.DocHeaderTempTableAdapter();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this._DataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.docHeaderTempBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.manifolddbDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this._DocHeaderTempBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._PictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -261,22 +258,20 @@ namespace POButler
             this._Label9.TabIndex = 26;
             this._Label9.Text = "(right click to remove record)";
             // 
-            // button1
+            // btnScanner
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(860, 55);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(145, 47);
-            this.button1.TabIndex = 29;
-            this.button1.Text = "Link Barcode test";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.btnScanner.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnScanner.Location = new System.Drawing.Point(919, 495);
+            this.btnScanner.Name = "btnScanner";
+            this.btnScanner.Size = new System.Drawing.Size(75, 23);
+            this.btnScanner.TabIndex = 31;
+            this.btnScanner.Text = "Scanner";
+            this.btnScanner.UseVisualStyleBackColor = true;
+            this.btnScanner.Click += new System.EventHandler(this.BtnScanner_Click);
+            // 
+            // docHeaderTempTableAdapter
+            // 
+            this.docHeaderTempTableAdapter.ClearBeforeFill = true;
             // 
             // _Button3
             // 
@@ -292,6 +287,7 @@ namespace POButler
             this._Button3.Text = "Error PO\'s";
             this._Button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this._Button3.UseVisualStyleBackColor = true;
+            this._Button3.Click += new System.EventHandler(this._Button3_Click);
             // 
             // _btnCheckCodes
             // 
@@ -388,6 +384,7 @@ namespace POButler
             this._BtnDownloadPOs.Text = "Download PO\'s";
             this._BtnDownloadPOs.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this._BtnDownloadPOs.UseVisualStyleBackColor = false;
+            this._BtnDownloadPOs.Click += new System.EventHandler(this.BtnDownloadPOs_Click);
             // 
             // _PictureBox2
             // 
@@ -399,39 +396,24 @@ namespace POButler
             this._PictureBox2.TabIndex = 12;
             this._PictureBox2.TabStop = false;
             // 
-            // button2
+            // button1
             // 
-            this.button2.Location = new System.Drawing.Point(902, 9);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 30;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
-            // 
-            // btnScanner
-            // 
-            this.btnScanner.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnScanner.Location = new System.Drawing.Point(919, 495);
-            this.btnScanner.Name = "btnScanner";
-            this.btnScanner.Size = new System.Drawing.Size(75, 23);
-            this.btnScanner.TabIndex = 31;
-            this.btnScanner.Text = "Scanner";
-            this.btnScanner.UseVisualStyleBackColor = true;
-            this.btnScanner.Click += new System.EventHandler(this.BtnScanner_Click);
-            // 
-            // docHeaderTempTableAdapter
-            // 
-            this.docHeaderTempTableAdapter.ClearBeforeFill = true;
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(789, 495);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(113, 23);
+            this.button1.TabIndex = 32;
+            this.button1.Text = "FDB Orders";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1017, 541);
-            this.Controls.Add(this.btnScanner);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnScanner);
             this.Controls.Add(this._Button3);
             this.Controls.Add(this._Label9);
             this.Controls.Add(this._BtnConString);
@@ -453,7 +435,6 @@ namespace POButler
             ((System.ComponentModel.ISupportInitialize)(this._DataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.docHeaderTempBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.manifolddbDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._DocHeaderTempBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._PictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -713,25 +694,23 @@ namespace POButler
             }
         }
 
-        private BindingSource _DocHeaderTempBindingSource;
-
         internal BindingSource DocHeaderTempBindingSource
         {
             [MethodImpl(MethodImplOptions.Synchronized)]
             get
             {
-                return _DocHeaderTempBindingSource;
+                return docHeaderTempBindingSource;
             }
 
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                if (_DocHeaderTempBindingSource != null)
+                if (docHeaderTempBindingSource != null)
                 {
                 }
 
-                _DocHeaderTempBindingSource = value;
-                if (_DocHeaderTempBindingSource != null)
+                docHeaderTempBindingSource = value;
+                if (docHeaderTempBindingSource != null)
                 {
                 }
             }
@@ -1134,9 +1113,8 @@ namespace POButler
         }
 
         private Button _Button3;
-        private Button button1;
-        private Button button2;
         private Button btnScanner;
+        private DataGridViewTextBoxColumn ordValue1DataGridViewTextBoxColumn;
         private ManifolddbDataSet manifolddbDataSet;
         private BindingSource docHeaderTempBindingSource;
         private ManifolddbDataSetTableAdapters.DocHeaderTempTableAdapter docHeaderTempTableAdapter;
@@ -1154,7 +1132,7 @@ namespace POButler
         private DataGridViewTextBoxColumn delAdd4DataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn repCodeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn ordValueDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn ordValue1DataGridViewTextBoxColumn;
+        private Button button1;
 
         //private DataGridViewTextBoxColumn IDDataGridViewTextBoxColumn;
 

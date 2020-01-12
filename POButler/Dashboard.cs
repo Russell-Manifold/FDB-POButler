@@ -5,6 +5,7 @@ using System;
 using System.Data.OleDb;
 using Microsoft.VisualBasic.CompilerServices;
 using BarcodeEncoder;
+
 namespace POButler
 {
     public partial class Dashboard
@@ -17,10 +18,7 @@ namespace POButler
         
         private PasSDK.PastelPartnerSDK SDK = new PasSDK.PastelPartnerSDK();
         private string StrReturn;
-        private string StrReturn1;
-        private string StrReturn2;
-        private string StrReturn3;
-
+        
         private object SetYourLicense(string Serno, string authcode)
         {     
              SDK.SetLicense(ref Serno, ref authcode);
@@ -247,14 +245,11 @@ namespace POButler
 
         private void Dashboard_Load()
         {
-           
-            
-            AddFields();
+            // TODO: This line of code loads data into the 'manifolddbDataSet.DocHeaderTemp' table. You can move, or remove it, as needed.
+            this.docHeaderTempTableAdapter.Fill(this.manifolddbDataSet.DocHeaderTemp);
+             AddFields();
             lblPasteldb.Text = Properties.Settings.Default.PastelDataPath;
-
-            
-            
-            lblReccount.Text = Conversions.ToString(DataGridView1.Rows.Count) + " records";
+           lblReccount.Text = Conversions.ToString(DataGridView1.Rows.Count) + " records";
             try
             {
                 DataGridView1.Columns[0].Visible = false;
@@ -288,17 +283,18 @@ namespace POButler
             {
                 poid = DataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
                 var frm = new PODetails(poid);
-                frm.ShowDialog();
-                DocHeaderTempTableAdapter.Fill(ManifolddbDataSet.DocHeaderTemp);
-                lblReccount.Text = Conversions.ToString(DataGridView1.Rows.Count) + " records";
-                try
-                {
-                    DataGridView1.Columns[0].Visible = false;
-                    DataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                }
-                catch (Exception)
-                {
-                }
+                frm.Show();
+                //frm.ShowDialog();
+                //DocHeaderTempTableAdapter.Fill(ManifolddbDataSet.DocHeaderTemp);
+                //lblReccount.Text = Conversions.ToString(DataGridView1.Rows.Count) + " records";
+                //try
+                //{
+                //    DataGridView1.Columns[0].Visible = false;
+                //    DataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                //}
+                //catch (Exception)
+                //{
+                //}
             }
             catch (Exception)
             {
@@ -438,40 +434,7 @@ namespace POButler
             lblPasteldb.Text = Properties.Settings.Default.PastelDataPath;
         }
 
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            Pastelinfo SerNum = new Pastelinfo();
-            SetYourLicense(SerNum.GetSerNum("A"), SerNum.GetAuthCode("A"));
-            // Set Pastel Data Path
-            string conpath = lblPasteldb.Text.Replace('\\', '/');
-            StrReturn = SDK.SetDataPath(Properties.Settings.Default.PastelDataPath);
-            if (StrReturn == "0")
-            {
-                StrReturn = SDK.DefineBOMHead("7290103668077|BOM HEADER|12.1|12.2|12.3|12.4|12.5|12.6|12.7|12.8|12.9|12|10|20|30|100|200|300|10106-30L-REDIB|Y|Y|N||N|N|002");
-            }
-            if (StrReturn == "0")
-            {
-                StrReturn = SDK.DefineBOMLine("7290103668077|1213-HANDLES|10|002");
-            }
-            //if (StrReturn == "0")
-            //{
-            //    StrReturn = SDK.DefineBOMLine("7290103668077|1213-LID|5|002");
-            //}
-            if (StrReturn == "0")
-            {
-                StrReturn = SDK.ImportBOM();
-            }
-
-            if (StrReturn == "0")
-            {
-                Interaction.MsgBox("YAY");
-            }
-            else {
-                Interaction.MsgBox("BOO");
-            }
-            }
-
-            private void _btnCheckCodes_Click(object sender, EventArgs e)
+       private void _btnCheckCodes_Click(object sender, EventArgs e)
         {
             var frm = new PseWait();
             frm.Show();
@@ -525,53 +488,34 @@ namespace POButler
             }
         }
 
-       private void Button2_Click(object sender, EventArgs e)
+     private void BtnScanner_Click(object sender, EventArgs e)
         {
-            int i = 0;
-            int j = 0;
-            string itmcode;
-            Pastelinfo SerNum = new Pastelinfo();
-            SetYourLicense(SerNum.GetSerNum("A"), SerNum.GetAuthCode("A"));
-            // Set Pastel Data Path
-            StrReturn = SDK.SetDataPath(Properties.Settings.Default.PastelDataPath);
-            var argFileName1 = "ACCPRD";
-            short argKeyNumber = Conversions.ToShort("4");
-            var argKeyValue = "*******63625*";
-            StrReturn = SDK.GetNearest(argFileName1, argKeyNumber, argKeyValue);
-            if ((StrReturn.Split('|')[0] ?? "") == "0")
-            {
-                do
-                {
-                    if ((StrReturn.Split('|')[4] ?? "").Contains("63625"))
-                    {
-                        itmcode = StrReturn.Split('|')[2];
-                        //Interaction.MsgBox("Barcode = " + StrReturn.Split('|')[4] + "(" + j + " Records searched)", Constants.vbInformation, "Validation passed");
-                        i += 1;
-                    }
-                    else
-                    {
-                        StrReturn = SDK.GetNext(argFileName1, argKeyNumber);
-                        j = j += 1;
-                    }
-                } while (i == 0);
-            }
-        }
-
-        private void BtnScanner_Click(object sender, EventArgs e)
-        {
-            Main m = new Main();
-            m.ShowDialog();
+            BarcodeEncoder.DashBoard d = new DashBoard();
+            //Main m = new Main();
+            d.ShowDialog();
         }
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
             if (Screen.PrimaryScreen.Bounds.Width < 400 && Screen.PrimaryScreen.Bounds.Height < 600)
             {
-                this.Hide();
-                Main m = new Main();
-                m.ShowDialog();
-                this.Close();
+               // this.Hide();
+                //Main m = new Main();
+               // m.ShowDialog();
+              //  this.Close();
             }
+        }
+
+        private void _Button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            var frm = new SalesOrders();
+            frm.ShowDialog();
         }
     }
 }

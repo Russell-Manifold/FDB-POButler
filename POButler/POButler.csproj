@@ -66,10 +66,10 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>65F79B987B942C71B3F712F778B8D2D1A4FB71D0</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>52D146C082F247AC4F1A6C99AC11A5190D0195AC</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>POButler_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>POButler_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -86,7 +86,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Interop.PasSDK">
-      <HintPath>obj\Debug\Interop.PasSDK.dll</HintPath>
+      <HintPath>..\Packages\Interop.PasSDK.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
@@ -186,6 +186,12 @@
     <Compile Include="InventoryView.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="ManifolddbDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -215,6 +221,12 @@
     <Compile Include="PseWait.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SalesOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesOrders.Designer.cs">
+      <DependentUpon>SalesOrders.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AddNewDealPrice.resx">
@@ -239,6 +251,9 @@
     <EmbeddedResource Include="InventoryView.resx">
       <DependentUpon>InventoryView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PODetails.resx">
       <DependentUpon>PODetails.cs</DependentUpon>
     </EmbeddedResource>
@@ -249,8 +264,14 @@
     <EmbeddedResource Include="PseWait.resx">
       <DependentUpon>PseWait.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SalesOrders.resx">
+      <DependentUpon>SalesOrders.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="ManifolddbDataSet.xsc">
       <DependentUpon>ManifolddbDataSet.xsd</DependentUpon>
     </None>
@@ -262,9 +283,6 @@
     <None Include="ManifolddbDataSet.xss">
       <DependentUpon>ManifolddbDataSet.xsd</DependentUpon>
     </None>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -273,9 +291,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="emailattachments\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="POButler_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

@@ -4,6 +4,23 @@
         <name>POButler</name>
     </assembly>
     <members>
+        <member name="F:POButler.Login.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:POButler.Login.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:POButler.Login.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="T:POButler.ManifolddbDataSet">
              <summary>
             Represents a strongly typed in-memory cache of data.
@@ -35,6 +52,11 @@
             </summary>
         </member>
         <member name="T:POButler.ManifolddbDataSet.InventoryAllocDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:POButler.ManifolddbDataSet.PastelInfoDataTable">
              <summary>
             Represents the strongly named DataTable class.
             </summary>
@@ -74,6 +96,11 @@
             Represents strongly named DataRow class.
             </summary>
         </member>
+        <member name="T:POButler.ManifolddbDataSet.PastelInfoRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
         <member name="T:POButler.ManifolddbDataSet.UploadEmailErrorsRow">
              <summary>
             Represents strongly named DataRow class.
@@ -109,6 +136,11 @@
             Row event argument class
             </summary>
         </member>
+        <member name="T:POButler.ManifolddbDataSet.PastelInfoRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
         <member name="T:POButler.ManifolddbDataSet.UploadEmailErrorsRowChangeEvent">
              <summary>
             Row event argument class
@@ -140,6 +172,11 @@
             </summary>
         </member>
         <member name="T:POButler.ManifolddbDataSetTableAdapters.InventoryAllocTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:POButler.ManifolddbDataSetTableAdapters.PastelInfoTableAdapter">
              <summary>
             Represents the connection and commands used to retrieve and save data.
             </summary>
@@ -258,6 +295,23 @@
         <member name="P:POButler.Properties.Resources.syncorders">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="F:POButler.SalesOrders.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:POButler.SalesOrders.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:POButler.SalesOrders.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
             </summary>
         </member>
     </members>
